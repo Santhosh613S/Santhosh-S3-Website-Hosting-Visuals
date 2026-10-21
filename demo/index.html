@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stratus – Weather, streamed</title>
+<meta name="description" content="Stratus is a demo weather streaming landing page. Original branding, offline sample data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Stratus home">STRATUS</a>
+  <nav aria-label="Sections"><a href="#top">Home</a><a href="#trending">Trending</a><a href="#storms">Storm watch</a><a href="#mylist">My list</a></nav>
+  <form class="search" id="searchForm" role="search">
+    <label class="sr" for="q">Search a city</label>
+    <input id="q" type="search" placeholder="Search a city" autocomplete="off" list="cities">
+    <datalist id="cities"></datalist>
+    <button type="submit" aria-label="Search">Search</button>
+  </form>
+  <div class="unit" role="group" aria-label="Temperature unit">
+    <button type="button" data-u="C" aria-pressed="true">°C</button><button type="button" data-u="F" aria-pressed="false">°F</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero" aria-live="polite">
+    <div class="sky" id="sky" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="tag">Now showing</p>
+      <h1 id="hCity">Mumbai</h1>
+      <p class="temp"><span id="hTemp">30</span><span id="hUnit">°C</span></p>
+      <p class="cond" id="hCond">Haze</p>
+      <ul class="facts"><li><span id="hHum">66%</span> humidity</li><li><span id="hWind">6 km/h</span> wind</li><li><span id="hRain">10%</span> chance of rain</li></ul>
+      <div class="cta"><button class="play" id="playBtn" type="button">▶ Play 5-day forecast</button><button class="ghost" id="listBtn" type="button">+ My list</button></div>
+    </div>
+  </section>
+
+  <section class="row" id="notfound" hidden>
+    <h2>Location not found</h2><p>We couldn’t find that city. Try one of the titles below, or search for Pune, Oslo or Lagos.</p>
+  </section>
+
+  <section class="row" id="trending"><h2>Trending cities</h2><div class="rail" id="railTrending"></div></section>
+  <section class="row" id="storms"><h2>Storm watch</h2><div class="rail" id="railStorm"></div></section>
+  <section class="row" id="cozy"><h2>Cold and cosy</h2><div class="rail" id="railCold"></div></section>
+  <section class="row" id="mylist"><h2>My list</h2><div class="rail" id="railList"></div><p class="empty" id="emptyList">Nothing here yet. Press “+ My list” on any city.</p></section>
+
+  <section class="plans" aria-labelledby="pt">
+    <h2 id="pt">Weather for every plan</h2>
+    <div class="grid">
+      <article><h3>Free</h3><p>Today’s conditions for any city.</p></article>
+      <article class="hot"><h3>Plus</h3><p>5-day forecasts, storm alerts and a saved list.</p></article>
+      <article><h3>Family</h3><p>Share one list with up to five people.</p></article>
+    </div>
+    <form class="signup" id="signup"><label for="mail">Email address</label><input id="mail" type="email" placeholder="you@example.com" required><button type="submit">Start watching</button></form>
+    <p class="msg" id="msg" role="status"></p>
+  </section>
+</main>
+<footer><p>Stratus is a fictional demo brand with sample data. Hosted as a static site for the S3 Website Hosting Visuals project.</p></footer>
+
+<dialog id="dlg" aria-labelledby="dTitle"><form method="dialog"><h2 id="dTitle"></h2><div id="dBody" class="days"></div><button class="play" value="close">Close</button></form></dialog>
+<script src="app.js"></script>
+</body>
+</html>
